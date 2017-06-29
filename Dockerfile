@@ -1,15 +1,12 @@
 # ------------------------------------------------------------------------------
-#
-# 	e.g. docker build -t cerw/laravel-nano .
-# ------------------------------------------------------------------------------
-
-# ------------------------------------------------------------------------------
 # Start with a base image
 # ------------------------------------------------------------------------------
 
 FROM ubuntu:latest
-MAINTAINER Petr Cervenka <petr@cervenka.space>
-
+LABEL maintainer "Petr Cervenka <petr@cervenka.space>"
+LABEL version="0.2"
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN true
 # ------------------------------------------------------------------------------
 # Provision the server
 # ------------------------------------------------------------------------------
@@ -17,6 +14,19 @@ MAINTAINER Petr Cervenka <petr@cervenka.space>
 RUN mkdir /provision
 ADD provision /provision
 RUN /provision/provision.sh
+
+ADD ./etc/supervisord.conf /etc/
+ADD ./etc/supervisor /etc/supervisor
+VOLUME [ "/var/log/supervisor" ]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+
+
+ENV DISPLAY :20.0
+ENV SCREEN_GEOMETRY "2304x1440x24"
+ENV CHROMEDRIVER_PORT 9515
+ENV CHROMEDRIVER_WHITELISTED_IPS "127.0.0.1"
+ENV CHROMEDRIVER_URL_BASE ''
+
 
 # ------------------------------------------------------------------------------
 # Clean up

@@ -10,7 +10,7 @@ apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 # ------------------------------------------------------------------------------
 
 # install PHP
-apt-get -y install curl php-cli imagemagick git php-curl php-xml  php-mbstring php-xml php-mysqlnd php-curl php-xdebug
+apt-get -y install curl php-zip zip unzip bzip2 php-cli php-imagick imagemagick git php-curl php-xml  php-mbstring php-xml php-mysqlnd php-curl php-xdebug
 #phpdismod xdebug
 #hpdismod -s cli xdebug
 
@@ -21,6 +21,7 @@ apt-get -y install curl php-cli imagemagick git php-curl php-xml  php-mbstring p
 curl -sS https://getcomposer.org/installer -o composer-setup.php
 php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 rm ./composer-setup.php
+chmod 755 /usr/local/bin/composer
 
 # ------------------------------------------------------------------------------
 # Node and npm
@@ -29,12 +30,28 @@ rm ./composer-setup.php
 curl -sL https://deb.nodesource.com/setup_7.x | bash -
 apt-get -y install nodejs
 
-# Chrome
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-dpkg -i google-chrome-stable_current_amd64.deb
-apt-get -fy install
-apt-get install xvfb
 
+# Chrome
+
+useradd automation --shell /bin/bash --create-home
+apt-get -yqq install xvfb tinywm && \
+apt-get -yqq install fonts-ipafont-gothic xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic && \
+apt-get -yqq install supervisor
+
+
+CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`
+mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION && \
+curl -sS -o /tmp/chromedriver_linux64.zip http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip && \
+unzip -qq /tmp/chromedriver_linux64.zip -d /opt/chromedriver-$CHROMEDRIVER_VERSION && \
+rm /tmp/chromedriver_linux64.zip && \
+chmod +x /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver && \
+ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver
+
+
+curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list && \
+    apt-get -yqq update && \
+    apt-get -yqq install google-chrome-stable
 # ------------------------------------------------------------------------------
 # Clean up
 # ------------------------------------------------------------------------------
