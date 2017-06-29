@@ -34,10 +34,8 @@ apt-get -y install nodejs
 # Chrome
 
 useradd automation --shell /bin/bash --create-home
-apt-get -yqq install xvfb tinywm && \
-apt-get -yqq install fonts-ipafont-gothic xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic && \
-apt-get -yqq install supervisor
-
+apt-get -yqq install xvfb tinywm supervisor
+apt-get -yqq install fonts-ipafont-gothic xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic
 
 CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`
 mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION && \
