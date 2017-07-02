@@ -56,10 +56,9 @@ curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key ad
 VNC_STORE_PWD_FILE=/home/automation/.vnc/passwd
 if [ ! -e "${VNC_STORE_PWD_FILE}" -o -n "${VNC_PASSWORD}" ]; then
     mkdir -vp /home/automation/.vnc
-    chown -R automation /home/automation/.vnc
     # the default VNC password is 'hola'
     x11vnc -storepasswd ${VNC_PASSWORD:-hola} ${VNC_STORE_PWD_FILE}
-
+    chown -R automation /home/automation
 fi
 
 # ------------------------------------------------------------------------------
