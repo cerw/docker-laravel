@@ -25,6 +25,7 @@ ADD ./etc/supervisord.conf /etc/
 ADD ./etc/supervisor /etc/supervisor
 VOLUME [ "/var/log/supervisor" ]
 # CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+
 EXPOSE 5900
 
 
