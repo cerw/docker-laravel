@@ -10,7 +10,7 @@ apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 # ------------------------------------------------------------------------------
 
 # install PHP
-apt-get -y install curl php-zip zip unzip bzip2 php-cli php-imagick imagemagick git php-curl php-xml  php-mbstring php-xml php-mysqlnd php-curl php-xdebug
+apt-get -y install curl php-zip zip unzip bzip2 php-cli php-imagick imagemagick git php-curl php-xml  php7.0-sqlite3 php-mbstring php-xml php-mysqlnd php-curl php-xdebug
 #phpdismod xdebug
 #hpdismod -s cli xdebug
 
@@ -35,7 +35,7 @@ apt-get -y install nodejs
 
 useradd automation --shell /bin/bash --create-home
 apt-get -yqq install xvfb tinywm supervisor vim
-apt-get -yqq install fonts-ipafont-gothic xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic
+apt-get -yqq install fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable
 
 CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`
 mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION && \
