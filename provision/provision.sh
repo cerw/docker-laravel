@@ -13,11 +13,13 @@ apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 # Node and npm
 # ------------------------------------------------------------------------------
 
-curl -sL https://deb.nodesource.com/setup_7.x | bash -
-apt-get -y install nodejs
 
+apt-get -y install curl
+
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+apt-get install -y nodejs
 # install PHP
-apt-get -y install curl php-zip zip unzip bzip2 php-cli php-imagick imagemagick git \
+apt-get -y install nodejs php-zip zip unzip bzip2 php-cli php-imagick imagemagick git \
 php-curl php-xml  php7.1-sqlite3 php-mbstring php-xml php-mysqlnd php-curl php-xdebug \
 memcached php-memcached
 
