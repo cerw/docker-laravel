@@ -9,19 +9,11 @@ apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 # PHP7
 # ------------------------------------------------------------------------------
 
-# ------------------------------------------------------------------------------
-# Node and npm
-# ------------------------------------------------------------------------------
 
-
-apt-get -y install curl
-
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-apt-get install -y nodejs
 # install PHP
 apt-get -y install nodejs php-zip zip unzip bzip2 php-cli php-imagick imagemagick git \
 php-curl php-xml  php7.1-sqlite3 php-mbstring php-xml php-mysqlnd php-curl php-xdebug \
-memcached php-memcached
+memcached php-memcached curl
 
 #phpdismod xdebug
 #hpdismod -s cli xdebug
@@ -35,6 +27,15 @@ php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 rm ./composer-setup.php
 chmod 755 /usr/local/bin/composer
 
+
+
+# ------------------------------------------------------------------------------
+# Node and npm
+# ------------------------------------------------------------------------------
+
+
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+apt-get install -y nodejs
 
 
 
