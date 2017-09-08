@@ -9,15 +9,14 @@ apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 # PHP7
 # ------------------------------------------------------------------------------
 
-
 # install PHP
-apt-get -y install nodejs php-zip zip unzip bzip2 php-cli php-imagick imagemagick git \
-php-curl php-xml  php7.1-sqlite3 php-mbstring php-xml php-mysqlnd php-curl php-xdebug \
-memcached php-memcached curl
+apt-get -y install curl php-zip zip unzip bzip2 php-cli php-imagick imagemagick git \
+php-curl php-xml  php7.0-sqlite3 php-mbstring php-xml php-mysqlnd php-curl php-xdebug \
+memcached php-memcached
 
 #phpdismod xdebug
 #hpdismod -s cli xdebug
-#erv
+
 # ------------------------------------------------------------------------------
 # Composer PHP dependency manager
 # ------------------------------------------------------------------------------
@@ -27,16 +26,12 @@ php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 rm ./composer-setup.php
 chmod 755 /usr/local/bin/composer
 
-
-
 # ------------------------------------------------------------------------------
 # Node and npm
 # ------------------------------------------------------------------------------
 
-
-curl -sL https://deb.nodesource.com/setup_8.x |  bash -
-apt-get install -y nodejs
-
+curl -sL https://deb.nodesource.com/setup_7.x | bash -
+apt-get -y install nodejs
 
 
 # Chrome
