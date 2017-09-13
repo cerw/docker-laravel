@@ -27,12 +27,3 @@ VOLUME [ "/var/log/supervisor" ]
 # CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
 
 EXPOSE 5900
-
-
-
-
-# ------------------------------------------------------------------------------
-# Clean up
-# ------------------------------------------------------------------------------
-
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
