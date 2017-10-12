@@ -27,3 +27,4 @@ VOLUME [ "/var/log/supervisor" ]
 # CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
 
 EXPOSE 5900
+EXPOSE 8081
