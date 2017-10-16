@@ -12,7 +12,7 @@ apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 # install PHP
 apt-get -y install curl php-zip zip unzip bzip2 php-cli php-imagick imagemagick git \
 php-curl php-xml  php7.0-sqlite3 php-mbstring php-xml php-mysqlnd php-curl php-xdebug \
-memcached php-memcached
+memcached php-memcached php7.0-soap
 
 #phpdismod xdebug
 #hpdismod -s cli xdebug
@@ -27,7 +27,7 @@ rm ./composer-setup.php
 chmod 755 /usr/local/bin/composer
 
 # ------------------------------------------------------------------------------
-# Node and npm
+# Node and npmu
 # ------------------------------------------------------------------------------
 
 curl -sL https://deb.nodesource.com/setup_7.x | bash -
@@ -68,5 +68,3 @@ fi
 # Clean up
 # ------------------------------------------------------------------------------
 rm -rf /provision
-apt-get clean
-rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
