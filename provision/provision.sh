@@ -30,7 +30,7 @@ chmod 755 /usr/local/bin/composer
 # Node and npmu
 # ------------------------------------------------------------------------------
 
-curl -sL https://deb.nodesource.com/setup_7.x | bash -
+curl -sL https://deb.nodesource.com/setup_8.x | bash -
 apt-get -y install nodejs
 
 

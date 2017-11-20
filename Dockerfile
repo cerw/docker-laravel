@@ -4,7 +4,7 @@
 
 FROM ubuntu:latest
 LABEL maintainer "Petr Cervenka <petr@cervenka.space>"
-LABEL version="0.2"
+LABEL version="0.3"
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
 # ------------------------------------------------------------------------------
