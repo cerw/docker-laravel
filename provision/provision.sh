@@ -10,7 +10,7 @@ apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 # ------------------------------------------------------------------------------
 
 # install PHP
-apt-get -y install curl php-zip zip unzip bzip2 php-cli php-imagick imagemagick git \
+apt-get -y install curl php-zip zip php7.0-gd unzip bzip2 php-cli php-imagick imagemagick git \
 php-curl php-xml  php7.0-sqlite3 php-mbstring php-xml php-mysqlnd php-curl php-xdebug \
 memcached php-memcached php7.0-soap
 
